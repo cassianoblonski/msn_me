@@ -27,23 +27,27 @@
         <!-- Using Comments View -->
         <div class="ui minimal comments">
           <h3 class="ui dividing header">Comments</h3>
+
+          <% @messages.each do |message| %>
           <div class="comment">
             <a class="avatar ui circular image">
               <%= image_tag("joe.jpg", :alt => "Joe's Avatar") %>
             </a>
             <div class="content">
-              <a class="author">Joe Henderson</a>
+              <a class="author"><%= message.user.username %></a>
               <div class="metadata">
-                <span class="date">5 days ago</span>
+                <span class="date"><%= time_ago_in_words(message.created_at) %> ago</span>
               </div>
               <div class="text">
-                Dude, this is awesome. Thanks so much
+                <%= simple_format(message.body) %>
               </div>
               <div class="actions">
                 <a class="reply">Reply</a>
               </div>
             </div>
           </div>
+          <% end %>
+
         </div>
 
         <!-- Using Feed View -->
