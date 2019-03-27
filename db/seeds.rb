@@ -7,8 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(username: "cassianoblonski", email:"cassianobsampaio@gmail.com", password:"1234")
-User.create(username: "bob", email:"bob@email.com", password:"1234")
 User.create(username: "rafaela", email:"rafaela@email.com", password:"1234")
+User.create(username: "bob", email:"bob@email.com", password:"1234")
 User.create(username: "mashrur", email:"mashrur@email.com", password:"1234")
 User.create(username: "pedro", email:"pedro@email.com", password:"1234")
 User.create(username: "milena", email:"milena@email.com", password:"1234")
+
+Message.create(body: "Hi I'm a new message", user: User.find_by_username("cassianoblonski"))
+Message.create(body: "Hi", user: User.find_by_username("rafaela"))
+Message.create(body: "Hi guys", user: User.find_by_username("bob"))
+Message.create(body: "Whats up?", user: User.find_by_username("mashrur"))
+
+
