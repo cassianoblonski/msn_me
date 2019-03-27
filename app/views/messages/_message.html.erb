@@ -1,0 +1,17 @@
+<div class="comment">
+  <a class="avatar ui circular image">
+    <%= image_tag("joe.jpg", :alt => "Joe's Avatar") %>
+  </a>
+  <div class="content">
+    <a class="author"><%= message.user.username %></a>
+    <div class="metadata">
+      <span class="date"><%= time_ago_in_words(message.created_at) %> ago</span>
+    </div>
+    <div class="text">
+      <%= simple_format(message.body) %>
+    </div>
+    <div class="actions">
+      <a class="reply">Reply</a>
+    </div>
+  </div>
+</div>
