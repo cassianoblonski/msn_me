@@ -2,7 +2,7 @@
   <div class="four wide column">
     <div class="ui fluid raised card chatbox">
       <h4 class="ui center aligned medium icon header">
-        <i class="circular green users icon"></i>
+        <i class="circular green users icon" id="menu-header"></i>
         Chat App!
       </h4>
       <div class="content">
@@ -23,8 +23,10 @@
 
   <div class="twelve wide column">
     <div class="ui fluid raised card chatbox">
-      <div class="content">
-        <h3 class="ui dividing header">Comments</h3>
+      <h3 class="ui top attached header">
+        Comments
+      </h3>
+      <div class="content" id="messages">
         <div class="ui minimal comments" id="message-container">
           <%= render @messages %>
         </div>
