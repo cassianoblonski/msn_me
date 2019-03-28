@@ -1,14 +1,11 @@
 class SessionsController < ApplicationController
-
+  before_action :logged_in_redirect, only: [:new, :create]
   def new
 
   end
 
   def create
-    # user = User.find_by(username: params[:session][:username].downcase)
-    # user = User.find_by(email: params[:session][:email].downcase)
-
-    user = User.find_by(email?)
+    user = User.find_by('email = :nick or username = :nick', nick: params[:session][:username].downcase)
 
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
@@ -27,12 +24,7 @@ class SessionsController < ApplicationController
   end
 
   private
-    def email?
-      email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-      if params[:session][:username].downcase.match(email_regex)
-        {email: params[:session][:username].downcase}
-      else
-        {username: params[:session][:username].downcase}
-      end
+    def logged_in_redirect
+      redirect_to root_path if logged_in?
     end
 end
