@@ -24,47 +24,23 @@
   <div class="twelve wide column">
     <div class="ui fluid raised card chatbox">
       <div class="content">
-        <!-- Using Comments View -->
         <div class="ui minimal comments">
           <h3 class="ui dividing header">Comments</h3>
           <%= render @messages %>
         </div>
 
-        <!-- Using Feed View -->
-        <!-- <div class="ui feed">
-          <div class="event">
-            <div class="label">
-              <%= image_tag("joe.jpg", :alt => "Joe's Avatar") %>
-            </div>
-            <div class="content">
-              <div class="summary">
-                <a>Joe Henderson</a>
-                <div class="date">
-                  3 days ago
-                </div>
-              </div>
-              <div class="extra text">
-                Ours is a life of constant reruns. We're always circling back to where we'd we started, then starting all over again. Even if we don't run extra laps that day, we surely will come back for more of the same another day soon.
-              </div>
-              <div class="meta">
-                <a class="like">
-                  <i class="like icon"></i> 5 Likes
-                </a>
-              </div>
-            </div>
-          </div>
-        </div> -->
-
       </div>
       <div class="extra content">
-        <form class="ui reply form">
+        <%= form_for(@message, html: { class: "ui reply form", role: "form"}, url: message_path) do |f| %>
           <div class="field">
             <div class="ui fluid icon input">
-              <input type="text" placeholder="Enter message...">
-              <i class="bordered inverted green edit icon"></i>
+              <%= f.text_field :body, placeholder:"Enter message..." %>
+              <%= f.button(class: "") do %>
+                <i class="bordered inverted green edit icon"></i>
+              <% end %>
             </div>
           </div>
-        </form>
+        <% end %>
       </div>
     </div>
   </div>
